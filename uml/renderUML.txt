@@ -1,0 +1,511 @@
+@startuml
+
+class engine.display.DisplayManager {
+	{field} -background : tools.vector.Vector3f
+	{field} {static} -delta : float
+	{field} {static} -height : int
+	{field} -isFullscreen : boolean
+	{field} -isResized : boolean
+	{field} {static} -lastFrameTime : long
+	{field} -sizeCallback : org.lwjgl.glfw.GLFWWindowSizeCallback
+	{field} -title : String
+	{field} {static} -width : int
+	{field} -window : long
+	{field} -windowPosX : [I
+	{field} -windowPosY : [I
+	{method}  {static} ~access$0 ( paramint1 : int ) : void
+	{method}  {static} ~access$1 ( paramint1 : int ) : void
+	{method}  {static} ~access$2 ( paramDisplayManager1 : engine.display.DisplayManager , paramboolean2 : boolean ) : void
+	{method} +closeDisplay () : void
+	{method} -createCallbacks () : void
+	{method} +createDisplay () : void
+	{method} -getCurrentTime () : long
+	{method}  {static} +getFrameTimeSeconds () : float
+	{method} +isFullscreen () : boolean
+	{method} +isResized () : boolean
+	{method} +mouseState ( paramboolean1 : boolean ) : void
+	{method} +setBackgroundColor ( paramfloat1 : float , paramfloat2 : float , paramfloat3 : float ) : void
+	{method} +setFullscreen ( paramboolean1 : boolean ) : void
+	{method} +shouldClose () : boolean
+	{method} +swapBuffers () : void
+	{method} +updateDisplay () : void
+}
+
+
+class engine.display.DisplayManager$1 {
+	{method} +invoke ( paramlong1 : long , paramint2 : int , paramint3 : int ) : void
+}
+
+
+class engine.display.Input {
+	{field} {static} -buttons : [Z
+	{field} {static} -buttonsClicked : [Z
+	{field} -keyboard : org.lwjgl.glfw.GLFWKeyCallback
+	{field} {static} -keys : [Z
+	{field} {static} -keysClicked : [Z
+	{field} -mouseButtons : org.lwjgl.glfw.GLFWMouseButtonCallback
+	{field} -mouseMove : org.lwjgl.glfw.GLFWCursorPosCallback
+	{field} -mouseScroll : org.lwjgl.glfw.GLFWScrollCallback
+	{field} {static} -mouseX : float
+	{field} {static} -mouseY : float
+	{field} {static} -scrollX : float
+	{field} {static} -scrollY : float
+	{method}  {static} ~access$0 () : [Z
+	{method}  {static} ~access$1 () : [Z
+	{method}  {static} ~access$2 ( paramfloat1 : float ) : void
+	{method}  {static} ~access$3 ( paramfloat1 : float ) : void
+	{method}  {static} ~access$4 () : [Z
+	{method}  {static} ~access$5 () : [Z
+	{method}  {static} ~access$6 () : float
+	{method}  {static} ~access$7 ( paramfloat1 : float ) : void
+	{method}  {static} ~access$8 () : float
+	{method}  {static} ~access$9 ( paramfloat1 : float ) : void
+	{method} +destroy () : void
+	{method} +getKeyboardCallback () : org.lwjgl.glfw.GLFWKeyCallback
+	{method} +getMouseButtonsCallback () : org.lwjgl.glfw.GLFWMouseButtonCallback
+	{method} +getMouseMoveCallback () : org.lwjgl.glfw.GLFWCursorPosCallback
+	{method}  {static} +getMousePosition () : tools.vector.Vector2f
+	{method} +getMouseScrollCallback () : org.lwjgl.glfw.GLFWScrollCallback
+	{method}  {static} +isButtonClicked ( paramint1 : int ) : boolean
+	{method}  {static} +isButtonDown ( paramint1 : int ) : boolean
+	{method}  {static} +isKeyClicked ( paramint1 : int ) : boolean
+	{method}  {static} +isKeyDown ( paramint1 : int ) : boolean
+}
+
+
+class engine.display.Input$1 {
+	{method} +invoke ( paramlong1 : long , paramint2 : int , paramint3 : int , paramint4 : int , paramint5 : int ) : void
+}
+
+
+class engine.display.Input$2 {
+	{method} +invoke ( paramlong1 : long , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class engine.display.Input$3 {
+	{method} +invoke ( paramlong1 : long , paramint2 : int , paramint3 : int , paramint4 : int ) : void
+}
+
+
+class engine.display.Input$4 {
+	{method} +invoke ( paramlong1 : long , paramdouble2 : double , paramdouble3 : double ) : void
+}
+
+
+class engine.fontMeshCreator.Character {
+	{field} -id : int
+	{field} -sizeX : double
+	{field} -sizeY : double
+	{field} -xAdvance : double
+	{field} -xMaxTextureCoord : double
+	{field} -xOffset : double
+	{field} -xTextureCoord : double
+	{field} -yMaxTextureCoord : double
+	{field} -yOffset : double
+	{field} -yTextureCoord : double
+}
+
+
+class engine.fontMeshCreator.FontType {
+	{field} -textureAtlas : int
+	{method} +loadText ( paramGuiText1 : engine.fontMeshCreator.GuiText ) : engine.fontMeshCreator.TextMeshData
+}
+
+
+class engine.fontMeshCreator.GuiText {
+	{field} -FONT_SIZE_CONST : int
+	{field} -centerText : boolean
+	{field} +colour : tools.vector.Vector3f
+	{field} -fontSize : float
+	{field} -lineMaxSize : float
+	{field} +numberOfLines : int
+	{field} -scaleUp : tools.vector.Vector2f
+	{field} -textMeshVao : int
+	{field} -textString : String
+	{field} -vertexCount : int
+	{method} #getMaxLineSize () : float
+	{method} +getMesh () : int
+	{method} #isCentered () : boolean
+	{method} +remove () : void
+	{method} +setMeshInfo ( paramint1 : int , paramint2 : int ) : void
+}
+
+
+class engine.fontMeshCreator.Line {
+	{field} -currentLineLength : double
+	{field} -maxLength : double
+	{field} -spaceSize : double
+	{method} #attemptToAddWord ( paramWord1 : engine.fontMeshCreator.Word ) : boolean
+	{method} #getLineLength () : double
+}
+
+
+class engine.fontMeshCreator.MetaFile {
+	{field} {static} -DESIRED_PADDING : int
+	{field} {static} -NUMBER_SEPARATOR : String
+	{field} {static} -PAD_BOTTOM : int
+	{field} {static} -PAD_LEFT : int
+	{field} {static} -PAD_RIGHT : int
+	{field} {static} -PAD_TOP : int
+	{field} {static} -SPLITTER : String
+	{field} -aspectRatio : double
+	{field} -horizontalPerPixelSize : double
+	{field} -metaData : java.util.Map
+	{field} -padding : [I
+	{field} -paddingHeight : int
+	{field} -paddingWidth : int
+	{field} -reader : java.io.BufferedReader
+	{field} -spaceWidth : double
+	{field} -values : java.util.Map
+	{field} -verticalPerPixelSize : double
+	{method} -close () : void
+	{method} #getCharacter ( paramint1 : int ) : engine.fontMeshCreator.Character
+	{method} -getValueOfVariable ( paramString1 : String ) : int
+	{method} -getValuesOfVariable ( paramString1 : String ) : [I
+	{method} -loadCharacter ( paramint1 : int ) : engine.fontMeshCreator.Character
+	{method} -loadCharacterData ( paramint1 : int ) : void
+	{method} -loadLineSizes () : void
+	{method} -loadPaddingData () : void
+	{method} -openFile ( paramFile1 : java.io.File ) : void
+	{method} -processNextLine () : boolean
+}
+
+
+class engine.fontMeshCreator.TextMeshCreator {
+	{field} {static} #LINE_HEIGHT : double
+	{field} {static} #SPACE_ASCII : int
+	{method}  {static} -addTexCoords ( paramList1 : java.util.List , paramdouble2 : double , paramdouble3 : double , paramdouble4 : double , paramdouble5 : double ) : void
+	{method}  {static} -addVertices ( paramList1 : java.util.List , paramdouble2 : double , paramdouble3 : double , paramdouble4 : double , paramdouble5 : double ) : void
+	{method} -addVerticesForCharacter ( paramdouble1 : double , paramdouble2 : double , paramCharacter3 : engine.fontMeshCreator.Character , paramdouble4 : double , paramList5 : java.util.List ) : void
+	{method} -completeStructure ( paramList1 : java.util.List , paramLine2 : engine.fontMeshCreator.Line , paramWord3 : engine.fontMeshCreator.Word , paramGuiText4 : engine.fontMeshCreator.GuiText ) : void
+	{method} -createQuadVertices ( paramGuiText1 : engine.fontMeshCreator.GuiText , paramList2 : java.util.List ) : engine.fontMeshCreator.TextMeshData
+	{method} -createStructure ( paramGuiText1 : engine.fontMeshCreator.GuiText ) : java.util.List
+	{method} #createTextMesh ( paramGuiText1 : engine.fontMeshCreator.GuiText ) : engine.fontMeshCreator.TextMeshData
+	{method}  {static} -listToArray ( paramList1 : java.util.List ) : [F
+}
+
+
+class engine.fontMeshCreator.TextMeshData {
+	{field} -textureCoords : [F
+	{field} -vertexPositions : [F
+	{method} +getVertexCount () : int
+}
+
+
+class engine.fontMeshCreator.Word {
+	{field} -fontSize : double
+	{field} -width : double
+	{method} #addCharacter ( paramCharacter1 : engine.fontMeshCreator.Character ) : void
+	{method} #getWordWidth () : double
+}
+
+
+abstract class engine.gui.animation.Animation {
+	{method} #endAnimation () : void
+	{method} +initAnimation ( paramAnimator1 : engine.gui.animation.Animator ) : void
+	{method}  {abstract} #startAnimation () : void
+	{method}  {abstract} +updateAnimation () : void
+}
+
+
+class engine.gui.animation.Animator {
+	{method} +addAnimation ( paramAnimation1 : engine.gui.animation.Animation ) : void
+	{method} +removeAnimation ( paramAnimation1 : engine.gui.animation.Animation ) : void
+}
+
+
+class engine.gui.animation.FadeInAnimation {
+	{field} {static} +FROM_DOWN : int
+	{field} {static} +FROM_LEFT : int
+	{field} {static} +FROM_RIGHT : int
+	{field} {static} +FROM_UP : int
+	{field} -direction : int
+	{field} -speed : float
+	{field} -toMove : float
+	{method} #startAnimation () : void
+	{method} +updateAnimation () : void
+}
+
+
+interface engine.gui.component.ColorComponent {
+	{method}  {abstract} +getColor () : tools.vector.Vector3f
+}
+
+
+abstract class engine.gui.component.Component {
+	{field} +hovered : boolean
+	{field} #isLoose : boolean
+	{field} +number : int
+	{field} +position : tools.vector.Vector2f
+	{field} +rotation : float
+	{field} +scale : tools.vector.Vector2f
+	{field} +visable : boolean
+	{method} +add ( paramComponent1 : engine.gui.component.Component ) : void
+	{method} +add ( paramComponent1 : engine.gui.component.Component , paramint2 : int ) : void
+	{method} +correctScale ( paramVector2f1 : tools.vector.Vector2f ) : void
+	{method} +isInComponent ( paramVector2f1 : tools.vector.Vector2f ) : boolean
+	{method} +isLoose () : boolean
+	{method} +remove ( paramComponent1 : engine.gui.component.Component ) : void
+	{method} -scale ( paramVector2f1 : tools.vector.Vector2f ) : void
+	{method} +setLoose ( paramboolean1 : boolean ) : void
+	{method} +toString () : String
+}
+
+
+class engine.gui.component.FixedScaleComponent {
+	{method} +correctScale ( paramVector2f1 : tools.vector.Vector2f ) : void
+}
+
+
+interface engine.gui.component.MouseListener {
+	{method}  {abstract} +mouseClicked () : void
+	{method}  {abstract} +mousePressed () : void
+}
+
+
+class engine.gui.component.RectComponent {
+}
+
+
+class engine.gui.component.StandartComponent {
+}
+
+
+interface engine.gui.component.TextComponent {
+	{method}  {abstract} +changeText ( paramString1 : String ) : void
+	{method}  {abstract} +getText () : engine.fontMeshCreator.GuiText
+}
+
+
+interface engine.gui.component.TextureComponent {
+	{method}  {abstract} +getTexture () : int
+}
+
+
+interface engine.gui.component.UpdateComponent {
+	{method}  {abstract} +update () : void
+}
+
+
+class engine.gui.component.solid.SolidButton {
+	{field} -color : tools.vector.Vector3f
+	{method} +changeText ( paramString1 : String ) : void
+	{method} +getText () : engine.fontMeshCreator.GuiText
+	{method} +mouseClicked () : void
+	{method} +mousePressed () : void
+}
+
+
+class engine.gui.component.solid.SolidComponent {
+	{field} -sizeX : float
+	{field} -sizeY : float
+	{method} +correctScale ( paramVector2f1 : tools.vector.Vector2f ) : void
+}
+
+
+class engine.gui.component.solid.SolidTextComponent {
+	{method} +changeText ( paramString1 : String ) : void
+	{method} +getText () : engine.fontMeshCreator.GuiText
+}
+
+
+class engine.gui.constaint.BorderSideConstaint {
+	{method} +update () : tools.vector.Vector2f
+}
+
+
+abstract class engine.gui.constaint.Constaint {
+	{field} #disX : float
+	{field} #disY : float
+	{method} +loadConstaint ( paramComponent1 : engine.gui.component.Component ) : void
+	{method}  {abstract} #update () : tools.vector.Vector2f
+	{method} +updateLocationInnerComponents () : void
+}
+
+
+class engine.gui.constaint.ListVerticalConstaint {
+	{method} +update () : tools.vector.Vector2f
+}
+
+
+abstract class engine.gui.constaint.SideConstaint {
+	{field} {static} +BOT_LEFT : int
+	{field} {static} +BOT_RIGHT : int
+	{field} {static} +CENTER : int
+	{field} {static} +TOP_LEFT : int
+	{field} {static} +TOP_RIGHT : int
+}
+
+
+class engine.gui.constaint.WindowSideConstaint {
+	{method} +update () : tools.vector.Vector2f
+}
+
+
+class engine.gui.main.GuiMaster {
+	{method}  {static} +changeScene ( paramComponent1 : engine.gui.component.Component ) : void
+	{method}  {static} +getVisableComponents () : java.util.List
+	{method}  {static} -getVisableComponents ( paramComponent1 : engine.gui.component.Component ) : java.util.List
+	{method}  {static} +init ( paramContentLoader1 : engine.model.ContentLoader ) : void
+	{method}  {static} -lambda$0 ( paramList1 : java.util.List , paramComponent2 : engine.gui.component.Component ) : void
+	{method}  {static} -lambda$1 ( paramList1 : java.util.List , paramComponent2 : engine.gui.component.Component ) : void
+	{method}  {static} +loadGuiText ( paramGuiText1 : engine.fontMeshCreator.GuiText ) : void
+	{method}  {static} +rebuildGui () : void
+	{method}  {static} +updateGui ( paramboolean1 : boolean ) : void
+	{method}  {static} -updateGui ( paramList1 : java.util.List , paramboolean2 : boolean , paramboolean3 : boolean ) : boolean
+}
+
+
+class engine.model.ContentLoader {
+	{field} -vaos : java.util.Map
+	{method} -bindIndicesBuffer ( param[I1 : [I , paramint2 : int ) : void
+	{method} +cleanUp () : void
+	{method} -createVAO () : int
+	{method} +loadToVAO ( param[F1 : [F ) : engine.model.RawModel
+	{method} +loadToVAO ( param[F1 : [F , param[F2 : [F ) : int
+	{method} +loadToVAO ( paramint1 : int , param[F2 : [F , param[I3 : [I ) : engine.model.RawModel
+	{method} -storeDataInAttributeList ( paramint1 : int , paramint2 : int , param[F3 : [F , paramint4 : int ) : void
+	{method} -storeDataInFloatBuffer ( param[F1 : [F , paramFloatBuffer2 : java.nio.FloatBuffer ) : java.nio.FloatBuffer
+	{method} -storeDataInIntBuffer ( param[I1 : [I ) : java.nio.IntBuffer
+	{method} -unbindVAO () : void
+}
+
+
+class engine.model.EmptyEntity {
+	{field} +position : tools.vector.Vector3f
+	{field} +rotation : tools.vector.Vector3f
+	{field} +scale : tools.vector.Vector3f
+}
+
+
+class engine.model.RawModel {
+	{field} -vaoID : int
+	{field} -vertexCount : int
+}
+
+
+class engine.model.RawModelCreator {
+	{method} +createRawModel ( paramint1 : int , paramint2 : int ) : engine.model.RawModel
+}
+
+
+class engine.renderer.GuiRenderer {
+	{method} +cleanUp () : void
+	{method} -endRendering () : void
+	{method} -prepare () : void
+	{method} +render ( paramList1 : java.util.List ) : void
+	{method} -renderText ( paramGuiText1 : engine.fontMeshCreator.GuiText , paramComponent2 : engine.gui.component.Component ) : void
+}
+
+
+class engine.renderer.MasterRenderer {
+	{field} {static} +FAR_PLANE : float
+	{field} {static} +FOV : float
+	{field} {static} +NEAR_PLANE : float
+	{field} -projectionMatrix : tools.vector.Matrix4f
+	{method} +cleanUp () : void
+	{method} -createProjectionMatrix () : tools.vector.Matrix4f
+	{method} +prepare () : void
+	{method} +render () : void
+}
+
+
+class engine.shader.FontShader {
+	{field} {static} -FRAGMENT_FILE : String
+	{field} {static} -VERTEX_FILE : String
+	{field} -color : int
+	{field} -location_transformationMatrix : int
+	{method} #bindAttributes () : void
+	{method} #getAllUniformLocations () : void
+	{method} +loadColor ( paramVector3f1 : tools.vector.Vector3f ) : void
+	{method} +loadTransformationMatrix ( paramMatrix4f1 : tools.vector.Matrix4f ) : void
+}
+
+
+class engine.shader.GuiShader {
+	{field} {static} -FRAGMENT_FILE : String
+	{field} {static} -VERTEX_FILE : String
+	{field} -color : int
+	{field} -hoverdBoolean : int
+	{field} -location_transformationMatrix : int
+	{field} -pictureModeBoolean : int
+	{method} #bindAttributes () : void
+	{method} #getAllUniformLocations () : void
+	{method} +loadColor ( paramVector3f1 : tools.vector.Vector3f ) : void
+	{method} +loadHoveredBoolean ( paramboolean1 : boolean ) : void
+	{method} +loadPictureModeBoolean ( paramboolean1 : boolean ) : void
+	{method} +loadTransformationMatrix ( paramMatrix4f1 : tools.vector.Matrix4f ) : void
+}
+
+
+abstract class engine.shader.ShaderProgram {
+	{field} -fragmentShaderID : int
+	{field} {static} -matrixBuffer : java.nio.FloatBuffer
+	{field} -programID : int
+	{field} -vertexShaderID : int
+	{method} #bindAttribute ( paramint1 : int , paramString2 : String ) : void
+	{method}  {abstract} #bindAttributes () : void
+	{method} +cleanUp () : void
+	{method}  {abstract} #getAllUniformLocations () : void
+	{method} #getUniformLocation ( paramString1 : String ) : int
+	{method} #load2DVector ( paramint1 : int , paramVector2f2 : tools.vector.Vector2f ) : void
+	{method} #loadBoolean ( paramint1 : int , paramboolean2 : boolean ) : void
+	{method} #loadFloat ( paramint1 : int , paramfloat2 : float ) : void
+	{method} #loadMatrix ( paramint1 : int , paramMatrix4f2 : tools.vector.Matrix4f ) : void
+	{method}  {static} -loadShader ( paramString1 : String , paramint2 : int ) : int
+	{method} #loadVector ( paramint1 : int , paramVector3f2 : tools.vector.Vector3f ) : void
+	{method} +start () : void
+	{method} +stop () : void
+}
+
+
+
+
+engine.display.DisplayManager -->  engine.display.Input : input
+engine.display.DisplayManager$1 -->  engine.display.DisplayManager : this$0
+engine.display.Input$1 -->  engine.display.Input : this$0
+engine.display.Input$2 -->  engine.display.Input : this$0
+engine.display.Input$3 -->  engine.display.Input : this$0
+engine.display.Input$4 -->  engine.display.Input : this$0
+engine.fontMeshCreator.FontType -->  engine.fontMeshCreator.TextMeshCreator : loader
+engine.fontMeshCreator.GuiText -->  engine.fontMeshCreator.FontType : font
+engine.fontMeshCreator.Line "1" o-- "0..*"  engine.fontMeshCreator.Word : words
+engine.fontMeshCreator.TextMeshCreator -->  engine.fontMeshCreator.MetaFile : metaData
+engine.fontMeshCreator.Word "1" o-- "0..*"  engine.fontMeshCreator.Character : characters
+engine.gui.animation.Animation -->  engine.gui.animation.Animator : animator
+engine.gui.animation.Animator "1" o-- "0..*"  engine.gui.animation.Animation : animationList
+engine.gui.animation.Animator -->  engine.gui.component.Component : component
+engine.gui.animation.FadeInAnimation --|>  engine.gui.animation.Animation
+engine.gui.component.Component "1" o-- "0..*"  engine.gui.component.Component : componentList
+engine.gui.component.Component -->  engine.gui.animation.Animator : animator
+engine.gui.component.Component -->  engine.gui.constaint.Constaint : constaint
+engine.gui.component.FixedScaleComponent --|>  engine.gui.component.Component
+engine.gui.component.RectComponent --|>  engine.gui.component.FixedScaleComponent
+engine.gui.component.StandartComponent --|>  engine.gui.component.Component
+engine.gui.component.TextComponent -->  engine.fontMeshCreator.FontType : FONT
+engine.gui.component.solid.SolidButton -->  engine.fontMeshCreator.GuiText : guiText
+engine.gui.component.solid.SolidButton --|>  engine.gui.component.solid.SolidComponent
+engine.gui.component.solid.SolidButton ..|>  engine.gui.component.ColorComponent
+engine.gui.component.solid.SolidButton ..|>  engine.gui.component.MouseListener
+engine.gui.component.solid.SolidButton ..|>  engine.gui.component.TextComponent
+engine.gui.component.solid.SolidComponent --|>  engine.gui.component.FixedScaleComponent
+engine.gui.component.solid.SolidTextComponent -->  engine.fontMeshCreator.GuiText : guiText
+engine.gui.component.solid.SolidTextComponent --|>  engine.gui.component.solid.SolidComponent
+engine.gui.component.solid.SolidTextComponent ..|>  engine.gui.component.TextComponent
+engine.gui.constaint.BorderSideConstaint --|>  engine.gui.constaint.SideConstaint
+engine.gui.constaint.Constaint -->  engine.gui.component.Component : component
+engine.gui.constaint.ListVerticalConstaint --|>  engine.gui.constaint.Constaint
+engine.gui.constaint.SideConstaint --|>  engine.gui.constaint.Constaint
+engine.gui.constaint.WindowSideConstaint --|>  engine.gui.constaint.SideConstaint
+engine.gui.main.GuiMaster -->  engine.gui.component.Component : masterComponent
+engine.gui.main.GuiMaster -->  engine.model.ContentLoader : loader
+engine.model.RawModelCreator -->  engine.model.ContentLoader : loader
+engine.renderer.GuiRenderer -->  engine.model.RawModel : quad
+engine.renderer.GuiRenderer -->  engine.shader.FontShader : fontShader
+engine.renderer.GuiRenderer -->  engine.shader.GuiShader : shader
+engine.shader.FontShader --|>  engine.shader.ShaderProgram
+engine.shader.GuiShader --|>  engine.shader.ShaderProgram
+
+
+@enduml
