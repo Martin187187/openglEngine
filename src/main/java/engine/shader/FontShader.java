@@ -5,8 +5,8 @@ import tools.vector.Vector3f;
 
 public class FontShader extends ShaderProgram{
 
-	private static final String VERTEX_FILE = "res/shaders/gui/font.vs";
-	private static final String FRAGMENT_FILE = "res/shaders/gui/font.fs";
+	private static final String VERTEX_FILE = "res/shaders/gui/font_vertex.glsl";
+	private static final String FRAGMENT_FILE = "res/shaders/gui/font_fragment.glsl";
 	
 	private int color;
 	private int location_transformationMatrix;

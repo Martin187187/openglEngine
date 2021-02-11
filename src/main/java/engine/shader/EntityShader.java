@@ -6,8 +6,8 @@ import tools.vector.Matrix4f;
 
 public class EntityShader extends ShaderProgram {
 
-	private static final String VERTEX_FILE = "res/shaders/entity/entity.vs";
-	private static final String FRAGMENT_FILE = "res/shaders/entity/entity.fs";
+	private static final String VERTEX_FILE = "res/shaders/entity/entity_vertex.glsl";
+	private static final String FRAGMENT_FILE = "res/shaders/entity/entity_fragment.glsl";
 
 	private int projectionMatrix;
 	private int transformationMatrix;

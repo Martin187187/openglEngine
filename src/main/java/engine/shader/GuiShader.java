@@ -5,8 +5,8 @@ import tools.vector.Vector3f;
 
 public class GuiShader extends ShaderProgram {
 
-	private static final String VERTEX_FILE = "res/shaders/gui/gui.vs";
-	private static final String FRAGMENT_FILE = "res/shaders/gui/gui.fs";
+	private static final String VERTEX_FILE = "res/shaders/gui/gui_vertex.glsl";
+	private static final String FRAGMENT_FILE = "res/shaders/gui/gui_fragment.glsl";
 
 	private int transformationMatrix;
 	private int color;
