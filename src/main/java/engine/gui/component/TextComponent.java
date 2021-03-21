@@ -2,6 +2,7 @@ package engine.gui.component;
 
 import java.io.File;
 
+import engine.EngineSingleton;
 import engine.fontMeshCreator.FontType;
 import engine.fontMeshCreator.GuiText;
 import engine.model.ContentLoader;
@@ -9,7 +10,7 @@ import engine.model.ContentLoader;
 public interface TextComponent {
 
 
-	public static final FontType FONT = new FontType(ContentLoader.loadTexture("arial"), new File("res/fonts/arial.fnt"));
+	public static final FontType FONT = new FontType(EngineSingleton.getLoader().loadTexture("arial"), new File("res/fonts/arial.fnt"));
 	public GuiText getText();
 	/**
 	 *TODO remove old GuiText from vao

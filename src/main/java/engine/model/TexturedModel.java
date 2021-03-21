@@ -1,5 +1,6 @@
 package engine.model;
 
+import engine.EngineSingleton;
 
 public class TexturedModel {
 
@@ -8,7 +9,7 @@ public class TexturedModel {
 	
 	public TexturedModel(RawModel rawModel, String path) {
 		this.rawModel = rawModel;
-		this.texture = ContentLoader.loadTexture(path);
+		this.texture = EngineSingleton.getLoader().loadTexture(path);
 	}
 
 	public RawModel getRawModel() {

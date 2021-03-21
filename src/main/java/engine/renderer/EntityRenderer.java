@@ -7,8 +7,8 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
-import engine.model.Camera;
-import engine.model.Entity;
+import engine.entity.Camera;
+import engine.entity.Entity;
 import engine.model.RawModel;
 import engine.model.TexturedModel;
 import engine.shader.EntityShader;

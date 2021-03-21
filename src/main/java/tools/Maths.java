@@ -1,6 +1,6 @@
 package tools;
 
-import engine.model.Camera;
+import engine.entity.Camera;
 import tools.vector.Matrix4f;
 import tools.vector.Vector2f;
 import tools.vector.Vector3f;

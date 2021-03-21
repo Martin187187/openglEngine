@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
+import engine.EngineSingleton;
 import engine.fontMeshCreator.GuiText;
 import engine.gui.component.ColorComponent;
 import engine.gui.component.Component;
@@ -27,12 +28,12 @@ public class GuiRenderer {
 	private GuiShader shader;
 	private FontShader fontShader;
 
-	public GuiRenderer(ContentLoader loader) {
+	public GuiRenderer() {
 		this.shader = new GuiShader();
 		fontShader = new FontShader();
 
 		float[] positions = { -1, 1, -1, -1, 1, 1, 1, -1 };
-		quad = loader.loadToVAO(positions);
+		quad = EngineSingleton.getLoader().loadToVAO(positions);
 
 	}
 

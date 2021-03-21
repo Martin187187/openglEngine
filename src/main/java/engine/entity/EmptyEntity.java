@@ -1,4 +1,4 @@
-package engine.model;
+package engine.entity;
 
 import tools.vector.Vector3f;
 

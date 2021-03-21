@@ -22,7 +22,7 @@ import tools.vector.Vector3f;
 public class ContentLoader {
 
 	private Map<Integer, List<Integer>> vaos = new HashMap<Integer, List<Integer>>();
-	private static List<Integer> textures = new LinkedList<Integer>();
+	private List<Integer> textures = new LinkedList<Integer>();
 	
 	public RawModel loadToVAO(int dimension, float[] positions, int[] indices) {
 		int vaoID = createVAO();
@@ -97,7 +97,7 @@ public class ContentLoader {
 		}
 		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
 	}
-	public static int loadTexture(String fileName) {
+	public int loadTexture(String fileName) {
 		int tex = Tools.loadTexture(fileName);
 		textures.add(tex);
 		return tex;

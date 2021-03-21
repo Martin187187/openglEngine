@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.lwjgl.glfw.GLFW;
 
+import engine.EngineSingleton;
 import engine.display.Input;
 import engine.fontMeshCreator.FontType;
 import engine.fontMeshCreator.GuiText;
@@ -17,11 +18,7 @@ import engine.model.ContentLoader;
 public class GuiMaster {
 
 	private static Component masterComponent = null;
-	private static ContentLoader loader;
 	
-	public static void init(ContentLoader theLoader) {
-		loader = theLoader;
-	}
 	public static void rebuildGui() {
 		masterComponent.getConstaint().updateLocationInnerComponents();
 	}
@@ -73,7 +70,7 @@ public class GuiMaster {
 	public static void loadGuiText(GuiText text) {
 		FontType font = text.getFont();
 		TextMeshData data = font.loadText(text);
-		int vao = loader.loadToVAO(data.getVertexPositions(), data.getTextureCoords());
+		int vao = EngineSingleton.getLoader().loadToVAO(data.getVertexPositions(), data.getTextureCoords());
 		text.setMeshInfo(vao, data.getVertexCount());
 	}
 

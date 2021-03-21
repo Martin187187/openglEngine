@@ -5,10 +5,10 @@ import java.util.List;
 import org.lwjgl.opengl.GL11;
 
 import engine.display.DisplayManager;
-import engine.model.Camera;
+import engine.entity.Camera;
+import engine.entity.DynamicEntity;
+import engine.entity.Entity;
 import engine.model.ContentLoader;
-import engine.model.DynamicEntity;
-import engine.model.Entity;
 import engine.shader.EntityShader;
 import engine.shader.TerrainShader;
 import tools.vector.Matrix4f;
@@ -28,7 +28,7 @@ public class MasterRenderer {
 	private TerrainShader terrainShader;
 	private TerrainRenderer terrainRenderer;
 	
-	public MasterRenderer(ContentLoader loader) {
+	public MasterRenderer() {
 		
 		projectionMatrix = createProjectionMatrix();
 		

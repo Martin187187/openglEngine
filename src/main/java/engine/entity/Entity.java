@@ -1,5 +1,6 @@
-package engine.model;
+package engine.entity;
 
+import engine.model.TexturedModel;
 import tools.vector.Vector3f;
 
 public class Entity extends EmptyEntity {

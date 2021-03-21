@@ -6,7 +6,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
-import engine.model.DynamicEntity;
+import engine.entity.DynamicEntity;
 import engine.model.RawModel;
 import engine.shader.TerrainShader;
 import tools.vector.Matrix4f;

@@ -1,4 +1,4 @@
-package engine.model;
+package engine.entity;
 
 import org.lwjgl.glfw.GLFW;
 
