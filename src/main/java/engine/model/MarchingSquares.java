@@ -14,7 +14,6 @@ public class MarchingSquares {
 		for(int i = 0; i< lengthX+1; i++) {
 			for(int j = 0; j < lengthY+1; j++) {
 				
-				Square square = new Square(iso);
 				
 			}
 		}
