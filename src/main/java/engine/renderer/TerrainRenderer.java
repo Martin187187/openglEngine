@@ -33,7 +33,7 @@ public class TerrainRenderer {
 			GL30.glBindVertexArray(raw.getVaoID());
 			GL20.glEnableVertexAttribArray(0);
 			shader.loadTranslationVector(block.getPosition());
-			GL11.glDrawArrays(GL11.GL_TRIANGLE_STRIP, 0, raw.getVertexCount());
+			GL11.glDrawElements(GL11.GL_TRIANGLES, raw.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
 		}
 		GL20.glDisableVertexAttribArray(0);
 		GL30.glBindVertexArray(0);

@@ -19,6 +19,7 @@ import engine.gui.constaint.WindowSideConstaint;
 import engine.gui.main.GuiMaster;
 import engine.renderer.GuiRenderer;
 import engine.renderer.MasterRenderer;
+import tools.vector.Vector3f;
 
 public class Test {
 	
@@ -45,6 +46,9 @@ public class Test {
 		//Render init
 		List<Entity> entities = new LinkedList<Entity>();
 		List<DynamicEntity> terrain = new LinkedList<DynamicEntity>();
+		
+		DynamicEntity d = new DynamicEntity(new Vector3f(0,0,0), new Vector3f(0,0,0), new Vector3f(1,1,1));
+		terrain.add(d);
 		
 		GuiRenderer guiRender = new GuiRenderer();
 		MasterRenderer renderer = new MasterRenderer();

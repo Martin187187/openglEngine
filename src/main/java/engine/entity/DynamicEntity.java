@@ -1,5 +1,6 @@
 package engine.entity;
 
+import engine.EngineSingleton;
 import engine.model.MarchingSquares;
 import engine.model.RawModel;
 import tools.vector.Vector3f;
@@ -12,10 +13,12 @@ public class DynamicEntity extends EmptyEntity {
 		super(postition, rotation, scale);
 		
 		initFullGrid();
-		this.model = MarchingSquares.createRawModel(grid, 1);
+		MarchingSquares m = new MarchingSquares(grid, 1);
+		this.model = EngineSingleton.getLoader().loadToVAO(2, m.getvArray(), m.getiArray());
 	}
 	
 	private void initFullGrid() {
+		grid = new int[4][4];
 		for(int i = 0; i < grid.length; i++) {
 			for(int j = 0; j < grid[i].length; j++) {
 				grid[i][j] = 1;
@@ -25,7 +28,6 @@ public class DynamicEntity extends EmptyEntity {
 	
 	public void update() {
 		//change grid
-		this.model = MarchingSquares.createRawModel(grid, 1);
 	}
 	public RawModel getModel() {
 		return model;
