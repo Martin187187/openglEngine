@@ -31,6 +31,10 @@ public class Test {
 			-0.5f, 0.5f, 0,
 			0.5f, -0.5f, 0,
 			0.5f, 0.5f, 0};
+	private final static int[] indecies = {
+			0, 1, 2,
+			2, 3, 1
+	};
 	public static void main(String[] args) {
 		GLFW.glfwSetErrorCallback(GLFWErrorCallback.createPrint(System.err));
 		DisplayManager display = new DisplayManager("test", 720, 480);
@@ -38,10 +42,9 @@ public class Test {
 		display.createDisplay();
 
 		ContentLoader loader = new ContentLoader();
-		RawModelCreator creator = new RawModelCreator(loader);
 		List<Entity> entities = new LinkedList<Entity>();
 		List<DynamicEntity> terrain = new LinkedList<DynamicEntity>();
-		RawModel model = loader.loadToVAO(3, positions);
+		RawModel model = loader.loadToVAO(3, positions, indecies);
 		DynamicEntity block = new DynamicEntity(model, new Vector3f(0,0,-2), new Vector3f(0,0,0), new Vector3f(1,1,1));
 		terrain.add(block);
 		//gui init
