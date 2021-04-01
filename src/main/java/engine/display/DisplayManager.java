@@ -12,6 +12,8 @@ import tools.vector.Vector3f;
 
 public class DisplayManager  {
 	private String title;
+	
+	private static boolean isLocked = false;
 	private static int width;
 	private static int height;
 	
@@ -33,6 +35,7 @@ public class DisplayManager  {
 		DisplayManager.width = width;
 		DisplayManager.height = height;
 		this.title = title;
+		isLocked = false;
 	}
 	
 	public void createDisplay() {
@@ -150,6 +153,7 @@ public class DisplayManager  {
 	}
 	
 	public void mouseState(boolean lock) {
+		isLocked = lock;
 		GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, lock ? GLFW.GLFW_CURSOR_DISABLED : GLFW.GLFW_CURSOR_NORMAL);
 	}
 
@@ -167,5 +171,9 @@ public class DisplayManager  {
 
 	public long getWindow() {
 		return window;
+	}
+
+	public static boolean isLocked() {
+		return isLocked;
 	}
 }

@@ -38,6 +38,14 @@ public class ContentLoader {
 		unbindVAO();
 		return new RawModel(vaoID, positions.length/dimension);
 	}
+	public RawModel loadToVAOTerrain(float[] positions, float[] normals, int[] indices) {
+		int vaoID = createVAO();
+		bindIndicesBuffer(indices, vaoID);
+		storeDataInAttributeList(0, 3, positions, vaoID);
+		storeDataInAttributeList(1, 3, normals, vaoID);
+		unbindVAO();
+		return new RawModel(vaoID, indices.length);
+	}
 	
 	public RawModel loadToVAO(float[] positions, float[] textureCoords, int[] indices) {
 		int vaoID = createVAO();

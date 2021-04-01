@@ -283,7 +283,9 @@ public class Vector3f extends Vector implements Serializable, ReadableVector3f, 
 
 		return this;
 	}
-
+	public float[] getArray() {
+		return new float[] {x,y,z};
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

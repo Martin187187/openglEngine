@@ -8,6 +8,7 @@ import engine.display.DisplayManager;
 import engine.entity.Camera;
 import engine.entity.DynamicEntity;
 import engine.entity.Entity;
+import engine.entity.Light;
 import engine.model.ContentLoader;
 import engine.shader.EntityShader;
 import engine.shader.TerrainShader;
@@ -44,7 +45,7 @@ public class MasterRenderer {
 		entityRenderer.reloadProjectionMatrix(projectionMatrix);
 		terrainRenderer.reloadProjectionMatrix(projectionMatrix);
 	}
-	public void render(Camera camera, List<Entity> entities, List<DynamicEntity> blocks) {
+	public void render(Camera camera, Light light, List<Entity> entities, List<DynamicEntity> blocks) {
 		prepare();
 		
 		
@@ -55,6 +56,8 @@ public class MasterRenderer {
 		
 		terrainShader.start();
 		terrainShader.loadViewMatrix(camera);
+		terrainShader.loadLightPositionVector(light.getPosition());
+		terrainShader.loadLightColourVector(light.getColour());
 		terrainRenderer.render(blocks);
 		terrainShader.stop();
 	}

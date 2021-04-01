@@ -12,6 +12,7 @@ import engine.display.Input;
 import engine.entity.Camera;
 import engine.entity.DynamicEntity;
 import engine.entity.Entity;
+import engine.entity.Light;
 import engine.gui.animation.FadeInAnimation;
 import engine.gui.component.Component;
 import engine.gui.component.StandartComponent;
@@ -55,7 +56,9 @@ public class Test {
 		
 		
 		Camera cam = new Camera();
+		Light light = new Light(new Vector3f(0,-10,5), new Vector3f(1,1,1));
 		boolean isGameMenu = true;
+		display.mouseState(false);
 		while (!display.shouldClose() && running) {
 
 			boolean rebuild = display.isResized();
@@ -68,16 +71,18 @@ public class Test {
 					gameMenu.getAnimator().addAnimation(new FadeInAnimation(FadeInAnimation.FROM_RIGHT, 2, 0.2f));
 					comp.add(gameMenu);
 				}
+				display.mouseState(isGameMenu);
 				isGameMenu = !isGameMenu;
 				rebuild = true;
 			}
 			// update
 			cam.move();
+			terrain.forEach(x->x.update());
 			GuiMaster.updateGui(rebuild);
 
 			List<Component> guis = GuiMaster.getVisableComponents();
 
-			renderer.render(cam, entities, terrain);
+			renderer.render(cam, light, entities, terrain);
 			guiRender.render(guis);
 
 			display.updateDisplay();
