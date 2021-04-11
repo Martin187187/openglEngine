@@ -45,7 +45,7 @@ public class MasterRenderer {
 		entityRenderer.reloadProjectionMatrix(projectionMatrix);
 		terrainRenderer.reloadProjectionMatrix(projectionMatrix);
 	}
-	public void render(Camera camera, Light light, List<Entity> entities, List<DynamicEntity> blocks) {
+	public void render(Camera camera, Light light, List<Entity> entities, List<? extends DynamicEntity> blocks) {
 		prepare();
 		
 		

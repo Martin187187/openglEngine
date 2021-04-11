@@ -28,7 +28,7 @@ public class TerrainRenderer {
 			shader.stop();
 		}
 	
-	public void render(List<DynamicEntity> blocks) {
+	public void render(List<? extends DynamicEntity> blocks) {
 		
 		for(DynamicEntity block: blocks) {
 			

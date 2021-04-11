@@ -13,6 +13,7 @@ import engine.entity.Camera;
 import engine.entity.DynamicEntity;
 import engine.entity.Entity;
 import engine.entity.Light;
+import engine.entity.Terrain;
 import engine.gui.animation.FadeInAnimation;
 import engine.gui.component.Component;
 import engine.gui.component.StandartComponent;
@@ -23,18 +24,19 @@ import engine.renderer.MasterRenderer;
 import tools.vector.Vector3f;
 
 public class Test {
-	
+
 	public static boolean running = true;
+
 	public static void main(String[] args) {
-		//Window creation
+		// Window creation
 		GLFW.glfwSetErrorCallback(GLFWErrorCallback.createPrint(System.err));
 		DisplayManager display = new DisplayManager("test", 720, 480);
 		display.setBackgroundColor(0.8f, 0.8f, 0.8f);
 		display.createDisplay();
-		
-		//Engine init
+
+		// Engine init
 		EngineSingleton engine = new EngineSingleton();
-		//Gui creation
+		// Gui creation
 		Component comp = new StandartComponent(new WindowSideConstaint());
 		GuiMaster.changeScene(comp);
 		comp.setVisable(false);
@@ -43,20 +45,18 @@ public class Test {
 		comp.add(inner, WindowSideConstaint.BOT_RIGHT);
 		comp.add(gameMenu, WindowSideConstaint.CENTER);
 		GuiMaster.rebuildGui();
-		
-		//Render init
+
+		// Render init
 		List<Entity> entities = new LinkedList<Entity>();
-		List<DynamicEntity> terrain = new LinkedList<DynamicEntity>();
-		
-		DynamicEntity d = new DynamicEntity(new Vector3f(0,0,0), new Vector3f(0,0,0), new Vector3f(1,1,1));
-		terrain.add(d);
+		TerrainManager manager = new TerrainManager();
+
+		List<Terrain> terrain = manager.getTerrainList();
 		
 		GuiRenderer guiRender = new GuiRenderer();
 		MasterRenderer renderer = new MasterRenderer();
-		
-		
+
 		Camera cam = new Camera();
-		Light light = new Light(new Vector3f(0,-10,5), new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(0, -10, 5), new Vector3f(1, 1, 1));
 		boolean isGameMenu = true;
 		display.mouseState(false);
 		while (!display.shouldClose() && running) {
@@ -77,7 +77,7 @@ public class Test {
 			}
 			// update
 			cam.move();
-			terrain.forEach(x->x.update());
+			terrain.forEach(x -> x.update());
 			GuiMaster.updateGui(rebuild);
 
 			List<Component> guis = GuiMaster.getVisableComponents();
