@@ -1,4 +1,4 @@
-package engineTest;
+package engineTest.gui;
 
 import engine.gui.component.solid.SolidButton;
 import tools.vector.Vector3f;

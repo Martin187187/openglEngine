@@ -21,6 +21,8 @@ import engine.gui.constaint.WindowSideConstaint;
 import engine.gui.main.GuiMaster;
 import engine.renderer.GuiRenderer;
 import engine.renderer.MasterRenderer;
+import engineTest.gui.ExampleRectGui;
+import engineTest.gui.GameMenu;
 import tools.vector.Vector3f;
 
 public class Test {
@@ -48,15 +50,17 @@ public class Test {
 
 		// Render init
 		List<Entity> entities = new LinkedList<Entity>();
-		TerrainManager manager = new TerrainManager();
-
-		List<Terrain> terrain = manager.getTerrainList();
+//		TerrainManager manager = new TerrainManager();
+//		List<Terrain> terrain = manager.getTerrainList();
+		List<Terrain> terrain = new LinkedList<>();
+		
+		
 		
 		GuiRenderer guiRender = new GuiRenderer();
 		MasterRenderer renderer = new MasterRenderer();
 
 		Camera cam = new Camera();
-		Light light = new Light(new Vector3f(0, -10, 5), new Vector3f(1, 1, 1));
+		Light light = new Light(new Vector3f(5, -10, 0), new Vector3f(1, 1, 1));
 		boolean isGameMenu = true;
 		display.mouseState(false);
 		while (!display.shouldClose() && running) {

@@ -1,4 +1,4 @@
-package engineTest;
+package engineTest.gui;
 
 import engine.gui.component.ColorComponent;
 import engine.gui.component.Component;
@@ -7,6 +7,7 @@ import engine.gui.component.solid.SolidButton;
 import engine.gui.component.solid.SolidTextComponent;
 import engine.gui.constaint.BorderSideConstaint;
 import engine.gui.constaint.ListVerticalConstaint;
+import engineTest.Test;
 import tools.vector.Vector3f;
 
 public class GameMenu extends StandartComponent implements ColorComponent{

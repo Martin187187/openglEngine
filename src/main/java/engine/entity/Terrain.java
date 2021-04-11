@@ -122,6 +122,6 @@ public class Terrain extends DynamicEntity {
 		} 
 		Mesh mesh = ExtractHandler.extractHandlerInt(getScalarGrid(), SIZE, VOX_SIZE, 0, 1);
 		if(mesh.getNormals().length>0)
-			model = EngineSingleton.getLoader().loadToVAO(3, mesh.getVertecies(), mesh.getIndecies());
+			model = EngineSingleton.getLoader().loadToVAO(mesh.getVertecies(), mesh.getNormals(), mesh.getIndecies());
 	}
 }

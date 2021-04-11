@@ -1,4 +1,4 @@
-package engineTest;
+package engineTest.gui;
 
 import org.junit.jupiter.api.Test;
 

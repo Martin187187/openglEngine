@@ -1,4 +1,4 @@
-package engineTest;
+package engineTest.gui;
 
 import engine.gui.component.ColorComponent;
 import engine.gui.component.StandartComponent;

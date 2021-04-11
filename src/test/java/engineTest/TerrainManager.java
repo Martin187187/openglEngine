@@ -8,7 +8,7 @@ import tools.vector.Vector3f;
 
 public class TerrainManager {
 
-	private final int[] SIZE = { 10, 2, 10 };
+	private final int[] SIZE = { 1, 1, 1 };
 	private Terrain[][][] terrain;
 
 	public TerrainManager() {
@@ -20,8 +20,8 @@ public class TerrainManager {
 		for (int i = 0; i < terrain.length; i++)
 			for (int j = 0; j < terrain[i].length; j++)
 				for (int k = 0; k < terrain[i][j].length; k++) {
-					if (i + j + k == 0)
-						terrain[i][j][k].zeroGrid();
+//					if (i + j + k == 0)
+//						terrain[i][j][k].zeroGrid();
 					terrain[i][j][k].updateMesh(terrain, SIZE);
 				}
 	}

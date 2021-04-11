@@ -335,7 +335,7 @@ public class ExtractHandler {
 		// Z axis offset for vertice position calculation
 		int zAxisOffset = 0;
 
-		System.out.println("PROGRESS: Executing marching cubes.");
+//		System.out.println("PROGRESS: Executing marching cubes.");
 
 		for (int i = 0; i < nThreads; i++) {
 			// Distribute remainder among first (remainder) threads
@@ -373,7 +373,7 @@ public class ExtractHandler {
 
 		// Join the threads
 		for (int i = 0; i < threads.size(); i++) {
-			System.out.println("PROGRESS: Reading input data.");
+//			System.out.println("PROGRESS: Reading input data.");
 			try {
 				threads.get(i).join();
 			} catch (InterruptedException e) {
@@ -381,7 +381,7 @@ public class ExtractHandler {
 			}
 		}
 
-		System.out.println("PROGRESS: Writing results to output file.");
+//		System.out.println("PROGRESS: Writing results to output file.");
 //		outputToFile(vertecies, normals, outFile);
 		return getMesh(vertecies, normals);
 	}
